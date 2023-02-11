@@ -161,9 +161,6 @@ static void hal_init(void)
 {
     /* Use the 'monitor' driver which creates window on PC's monitor to simulate a display*/
     monitor_init();
-
-    SDL_ShowCursor(false); /* 隐藏光标 */
-
     /* Tick init.
      * You have to call 'lv_tick_inc()' in periodically to inform LittelvGL about
      * how much time were elapsed Create an SDL thread to do this*/
@@ -195,6 +192,9 @@ static void hal_init(void)
     /* Add the mouse as input device
      * Use the 'mouse' driver which reads the PC's mouse*/
     mouse_init();
+
+    SDL_ShowCursor(false); /* 隐藏光标 */
+
     static lv_indev_drv_t indev_drv_1;
     lv_indev_drv_init(&indev_drv_1); /*Basic initialization*/
     indev_drv_1.type = LV_INDEV_TYPE_POINTER;
