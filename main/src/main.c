@@ -72,123 +72,25 @@ static int  tick_thread(void *data);
 
 void my_lvgl_fs_test(void)
 {
-#if 0 /* 测试读写 */
-    lv_fs_file_t f;
-    lv_fs_res_t  res;
-    char        *dirName = "/Track";
-    lv_fs_dir_t  dir;
-    char         dirNameTemp[512] = {0};
-    char         temp[512]        = {0};
-    strcat(dirNameTemp, dirName);
-    strcat(dirNameTemp, "/");
-    // sprintf(temp, "%s-%03d.txt", esp_log_system_timestamp(), esp_random() % 100);
-    sprintf(temp, "%03d.txt", esp_random() % 100);
-
-    strcat(dirNameTemp, temp);
-    // strcat(dirNameTemp, "/");
-    ESP_LOGI("fs_test", "dirNameTemp: %s", dirNameTemp);
-
-    /* 创建文件并写入名字 */
-    res = lv_fs_open(&f, dirNameTemp, LV_FS_MODE_RD | LV_FS_MODE_WR);
-    if (res != LV_FS_RES_OK) {
-        ESP_LOGW("fs_test", "lv_fs_open failed: %d", res);
-    } else {
-        ESP_LOGW("fs_test", "lv_fs_open succeed");
-        ESP_LOGI("fs_test", "temp: %s", temp);
-        res = lv_fs_write(&f, temp, strlen(temp), NULL);
-        if (res == LV_FS_RES_OK) {
-            ESP_LOGI("fs_test", "lv_fs_write ok");
-        } else {
-            ESP_LOGE("fs_test", "lv_fs_write failed: %d", res);
-        }
-
-        memset(temp, 0, 512);
-        uint32_t actual_read_byte = 0;
-
-        res = lv_fs_read(&f, temp, 512, &actual_read_byte);
-
-        if (res == LV_FS_RES_OK) {
-            ESP_LOGI("fs_test", "lv_fs_read ok, byte: %d", actual_read_byte);
-            ESP_LOGI("fs_test", "temp: %s", temp);
-        } else {
-            ESP_LOGE("fs_test", "lv_fs_read failed: %d", res);
-        }
-    }
-
-    /* 扫描其中文件 */
-    if (lv_fs_dir_open(&dir, dirName) == LV_FS_RES_OK) {
-
-        LV_LOG_USER("%s open success", dirName);
-
-        char name[512];
-        while (1) {
-
-            /* 用于防止遍历文件时文件过多耗时过多导致看门狗触发 */
-            if ((esp_log_timestamp() + 1) % 200 == 0) {
-                vTaskDelay(pdMS_TO_TICKS(1));
-            }
-
-            lv_fs_res_t res = lv_fs_dir_read(&dir, name);
-
-            if (name[0] == '\0' || res != LV_FS_RES_OK) {
-                // LV_LOG_ERROR("name = %s, res = %d", name, res);
-                break;
-            }
-
-            LV_LOG_USER("name = %s", name); /* TODO: 记得注释掉 */
-        }
-        lv_fs_dir_close(&dir);
-    } else {
-        LV_LOG_ERROR("%s open faild", dirName);
-    }
-
-    // uint32_t t0 = esp_log_timestamp();
-    // for (uint32_t i = 0; i < 9999999999999; i++) {
-    //     lv_fs_open(&f, "/:foo.txt", LV_FS_MODE_RD);
-    //     if (esp_log_timestamp() - t0 >= 20) {
-    //         t0 = esp_log_timestamp();
-    //         /* 用于防止遍历文件时文件过多耗时过多导致看门狗触发 */
-    //         vTaskDelay(pdMS_TO_TICKS(10));
-    //     }
-    // }
-
-    // uint32_t read_num;
-    // uint8_t  buf[8];
-    // res = lv_fs_read(&f, buf, 8, &read_num);
-    // if (res != LV_FS_RES_OK || read_num != 8) my_error_handling();
-
-    lv_fs_close(&f);
-#else /* 扫描文件 */
-    bool        retval  = false;
-    char       *dirName = "/";
+    bool        retval    = false;
+    char       *dirName   = "/";
+    char        name[128] = {0};
     lv_fs_dir_t dir;
 
     if (lv_fs_dir_open(&dir, dirName) == LV_FS_RES_OK) {
-
         printf("%s open success\n", dirName); /* LV_LOG_USER */
-
-        char name[128];
         while (1) {
-
-            /* 用于防止遍历文件时文件过多耗时过多导致看门狗触发 */
-            if ((esp_log_timestamp() + 1) % 200 == 0) {
-                vTaskDelay(pdMS_TO_TICKS(1));
-            }
-
             lv_fs_res_t res = lv_fs_dir_read(&dir, name);
-
             if (name[0] == '\0' || res != LV_FS_RES_OK) {
                 printf("error: name = %s, res = %d\n", name, res); /* LV_LOG_ERROR */
                 break;
             }
-
-            printf("name = %s\n", name); /* TODO: 记得注释掉 */
+            printf("name = %s\n", name);
         }
         lv_fs_dir_close(&dir);
     } else {
         printf("error: %s open faild\n", dirName);
     }
-#endif
 }
 
 /**********************
