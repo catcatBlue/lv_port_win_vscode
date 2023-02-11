@@ -161,6 +161,9 @@ static void hal_init(void)
 {
     /* Use the 'monitor' driver which creates window on PC's monitor to simulate a display*/
     monitor_init();
+
+    SDL_ShowCursor(false); /* 隐藏光标 */
+
     /* Tick init.
      * You have to call 'lv_tick_inc()' in periodically to inform LittelvGL about
      * how much time were elapsed Create an SDL thread to do this*/
