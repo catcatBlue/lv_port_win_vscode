@@ -16,7 +16,9 @@
             "ui.h": "c",
             "ui_helpers.h": "c",
             "ui_comp.h": "c",
-            "fstream": "c"
+            "fstream": "c",
+            "stdlib.h": "c",
+            "stdio.h": "c"
         }
     }
 }

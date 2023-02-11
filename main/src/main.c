@@ -9,6 +9,7 @@
  *********************/
 #define _DEFAULT_SOURCE /* needed for usleep() */
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
 #define SDL_MAIN_HANDLED /*To fix SDL's "undefined reference to WinMain" issue*/
 #include <SDL.h>
@@ -73,7 +74,7 @@ static int  tick_thread(void *data);
 void my_lvgl_fs_test(void)
 {
     bool        retval    = false;
-    char       *dirName   = "/";
+    char       *dirName   = "A";
     char        name[128] = {0};
     lv_fs_dir_t dir;
 
@@ -109,6 +110,8 @@ int main(int argc, char **argv)
     hal_init();
 
     // ui_init();
+
+    // my_lvgl_fs_test();
 
     lv_example_gif_1();
     // lv_example_style_1();
