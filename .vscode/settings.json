@@ -1,15 +1,3 @@
 {
-    "C_Cpp.intelliSenseEngine": "default",
-    "files.associations": {
-        "*.ino": "cpp",
-        "*.pde": "cpp",
-        "*.txt": "cmake",
-        "lvgl.h": "c",
-        "lv_examples.h": "c",
-        "unistd.h": "c",
-        "stdlib.h": "c",
-        "lv_example_anim.h": "c",
-        "lv_example_event.h": "c",
-        "lv_example_style.h": "c"
-    }
+    "C_Cpp.intelliSenseEngine": "default"
 }

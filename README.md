@@ -1,5 +1,7 @@
 # Simulator project for LVGL embedded GUI Library
 
+[[中文]](./README_cn.md)
+
 The [LVGL](https://github.com/lvgl/lvgl) is written mainly for microcontrollers and embedded systems however you can run the library **on your PC** as well without any embedded hardware. The code written on PC can be simply copied when your are using an embedded system.
 
 Using a PC simulator instead of an embedded hardware has several advantages:
