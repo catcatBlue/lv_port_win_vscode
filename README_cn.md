@@ -6,6 +6,10 @@
 
 修改 lvgl 配置和驱动配置可以在`lib\config`里改头文件。
 
+## 日志
+
+- 2022.02.11: 支持了文件系统，把文件放到`./storage`里就能访问了。
+
 ## 用法
 
 在 windows 上用 vscode 打开`lv_sim_vscode_sdl.code-workspace`工作区。

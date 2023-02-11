@@ -31,7 +31,13 @@ FILE(GLOB_RECURSE LVGL_Sources CONFIGURE_DEPENDS lib/lvgl/*.c)
 FILE(GLOB_RECURSE UI_Sources CONFIGURE_DEPENDS lib/ui/*.c)
 FILE(GLOB_RECURSE MAIN_Sources CONFIGURE_DEPENDS main/src/*.c)
 
-add_executable(${PROJECT_NAME} ${MAIN_Sources} ${UI_Sources} ${LVGL_Sources} ${LV_DRIVERS_Sources})
+add_executable(
+    ${PROJECT_NAME} 
+    ${MAIN_Sources} 
+    ${UI_Sources} 
+    ${LVGL_Sources} 
+    ${LV_DRIVERS_Sources} 
+)
 
 target_link_libraries(
     ${PROJECT_NAME}

@@ -8,6 +8,15 @@
         "search.exclude": {
             "build": true
         },
-        "search.useIgnoreFiles": false
+        "search.useIgnoreFiles": false,
+        "files.associations": {
+            "*.ino": "cpp",
+            "*.pde": "cpp",
+            "*.txt": "cmake",
+            "ui.h": "c",
+            "ui_helpers.h": "c",
+            "ui_comp.h": "c",
+            "fstream": "c"
+        }
     }
 }
