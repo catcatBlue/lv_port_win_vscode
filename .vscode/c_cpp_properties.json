@@ -1,22 +1,22 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "Win32",
+            "compilerPath": "C:\\mingw64\\bin\\gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
             "includePath": [
                 "${workspaceFolder}/**"
             ],
-            "defines": [],
-            "intelliSenseMode": "gcc-x64",
             "browse": {
                 "path": [
+                    "C:\\mingw64\\**",
                     "${workspaceFolder}/**"
                 ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
+                "limitSymbolsToIncludedHeaders": false
             },
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c11",
-            "cppStandard": "c++17"
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
     "version": 4

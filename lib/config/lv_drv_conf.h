@@ -87,8 +87,8 @@
 #endif
 
 #if USE_MONITOR
-#  define MONITOR_HOR_RES     800
-#  define MONITOR_VER_RES     600
+#  define MONITOR_HOR_RES     320
+#  define MONITOR_VER_RES     240
 
 /* Scale window by this factor (useful when simulating small screens) */
 #  define MONITOR_ZOOM        1
@@ -98,7 +98,7 @@
 #  define MONITOR_DOUBLE_BUFFERED 0
 
 /*Eclipse: <SDL2/SDL.h>    Visual Studio: <SDL.h>*/
-#  define MONITOR_SDL_INCLUDE_PATH    <SDL2/SDL.h>
+#  define MONITOR_SDL_INCLUDE_PATH    <SDL.h>
 
 /*Open two windows to test multi display support*/
 #  define MONITOR_DUAL            0
